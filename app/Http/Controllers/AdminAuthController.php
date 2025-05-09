@@ -21,7 +21,7 @@ class AdminAuthController extends Controller
         if(!Auth::attempt($credentials)){
             return  redirect("/auth/admin/")->with("message","invalid Credentials");
         };
-        return redirect("/")->with("success","you logged successfully");
+        return redirect("/admin/dashboard")->with("success","you logged successfully");
     }
     public function logout(){
         Auth::logout();

@@ -108,8 +108,18 @@
     .dash-header input{
         width: 80%;
     }
+    /*admin tables*/
+    .table-admin{
+        @apply w-full overflow-x-scroll mt-8 rounded-md;
+    }
+    .table-admin th,td{
+        @apply border border-gray-300
+    }
+    .table-admin td{
+        @apply p-2
+    }
     /*card design*/
     .card{
-        @apply bg-white shadow-md p-6
+        @apply bg-white shadow-md p-6 rounded-md;
     }
 }

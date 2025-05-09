@@ -54,10 +54,11 @@ export default function AdminLayout({children}){
                             <i><FaUserAlt className="text-xl"/></i>
                             <Link>Clients</Link>
                         </div>
+                        {auth.user.role == "super" ?
                         <div className="flex gap-2">
                             <i><FaGear className="text-xl"/></i>
-                            <Link>Administrateurs</Link>
-                        </div>
+                            <Link href="/admin/admin-gest">Administrateurs</Link>
+                        </div>:""}
                     </div>
                     <div className="mt-2">
                     <form onSubmit={logout}>

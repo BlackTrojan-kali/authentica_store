@@ -1,9 +1,13 @@
 import { FaArrowRight, FaDollarSign, FaShoppingCart, FaStore, FaUsers } from "react-icons/fa";
 import DashHeader from "../components/DashHeader";
 import AdminLayout from "../Layouts/adminLayout";
+import { Head } from "@inertiajs/react";
 const Index = () => {
   return (
     <div>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
       <DashHeader/>
       <section className="flex gap-10 p-8">
         <div>
@@ -49,7 +53,7 @@ const Index = () => {
                   <FaShoppingCart className="w-10 h-auto text-cyan-600"/>
                 </div>
                 <div className="text-sm font-bold">
-                  <h3 className="text-gray-400">Nouvelles Commandess</h3>
+                  <h3 className="text-gray-400">Nouvelles Commandes</h3>
                   <span className="text-cyan-600">20</span>
                 </div>
                 <div className="p-4 ml-4">
