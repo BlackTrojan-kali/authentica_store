@@ -1,11 +1,115 @@
 @import 'tailwindcss';
 
+
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Roboto';
+}
+@layer base{
+    :root{
+        --primary:rgb(84, 168, 223);
+        --secondary:rgb(9, 107, 172);
+        --ternary:rgb(77, 111, 134);
+    }
+    body{
+        @apply bg-gray-100 w-full h-full;
+    }
+}
+@layer components{
+
+    /*SIDEBAR LAYOUT STYLE*/
+    .sidebar{
+        position: fixed;
+        padding: 10px;
+        background-color: rgba(8, 5, 44);
+        height: 100vh;
+        color:white;
+        width: 270px;
+        
+    }
+    .sidebar a:hover{
+        color: var(--primary)
+    }
+    /*form style*/
+    .champ{
+        @apply w-full border border-gray-300 rounded-md p-2 mt-1;
+    }
+    .champ::placeholder{
+        @apply text-gray-400
+    }
+    .form-submit{
+        background-color: var(--primary);
+        padding: 5px;
+        width: 100%;
+        margin-top: 10px;
+        color: white;
+        font: "bold";
+        border-radius: 4px;
+    }
+    .form-submit:hover{
+        background-color: var(--secondary);
+        cursor: pointer;
+    }
+    /*Custom messages*/
+    .toasts{
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 2;
+        transition: all 0.4s ease;
+    }
+    .message{
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+        font-weight: "bold";
+    }
+    .warning{
+        background-color: rgb(235, 102, 14);
+    }
+    .error{
+        background-color: rgb(184, 13, 13);
+    }
+    .success{
+        
+        background-color: rgb(42, 167, 48);
+    }
+    .info{
+        
+        background-color: var(--primary);
+    }
+    /*dashboard children*/
+    .dashboard-section{
+        margin-left: 270px;
+    }
+    .dash-header{
+        background-color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        box-shadow:rgb(185, 183, 183) 10px 1px 10px;
+        display: flex;
+        gap: 10px;
+
+    }
+    .dash-header svg{
+        width: 20px;
+        height: auto;
+    }
+    .dash-header input{
+        width: 80%;
+    }
+    /*card design*/
+    .card{
+        @apply bg-white shadow-md p-6
+    }
 }
