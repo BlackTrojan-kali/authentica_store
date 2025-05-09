@@ -14,6 +14,9 @@ Route::middleware(IsSuperMiddleware::class)->group(function(){
  //manage admins
     Route::get("/admin/create-admin",[adminController::class,"create"]);
     Route::post("/admin/create-admin",[adminController::class,"store"]);
+    Route::get("/admin/edit-admin/{user}",[adminController::class,"edit"]);
+    Route::post("/admin/edit-admin/{user}",[adminController::class,"update"]);
+    Route::delete("/admin/delete-admin/{user}",[adminController::class,"delete"]);
 });
 
 Route::get("/auth/admin",[AdminAuthController::class,"admin_login"]);

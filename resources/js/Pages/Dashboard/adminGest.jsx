@@ -1,9 +1,13 @@
-import { Head, Link } from "@inertiajs/react"
+import { Head, Link, useForm } from "@inertiajs/react"
 import AdminLayout from "../Layouts/adminLayout"
 import DashHeader from "../components/DashHeader"
 import { FaEdit, FaTrash } from "react-icons/fa"
 
 const  adminGest= ({admins})=>{
+    const {delete:destroy} = useForm();
+    const submit = (idUser)=>{
+        destroy(`/admin/delete-admin/${idUser}`)
+    }
     return(
         <div>
             <Head>
@@ -39,12 +43,12 @@ const  adminGest= ({admins})=>{
                                     <td>{admin.email}</td>
                                     <td>{admin.created_at}</td>
                                     <td className="flex gap-4">
-                                        <Link>
+                                        <Link href={`/admin/edit-admin/${admin.id}`}>
                                             <FaEdit className="text-blue-500 text-2xl"/>
                                         </Link>
-                                        <Link>
-                                            <FaTrash className="text-red-800 text-2xl"/>
-                                        </Link>
+                                        <form onSubmit={e=>submit(admin.id)}>
+                                            <button>    <FaTrash className="text-red-800 text-2xl"/></button>
+                                        </form>
                                     </td>
                                 </tr>
                             ))}

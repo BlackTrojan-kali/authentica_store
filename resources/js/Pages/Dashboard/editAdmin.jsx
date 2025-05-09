@@ -3,25 +3,24 @@ import AdminLayout from "../Layouts/adminLayout"
 import DashHeader from "../components/DashHeader"
 import { FaSave } from "react-icons/fa"
 
-const createAdmin = ()=>{
+const editAdmin = ({user})=>{
     const {data,setData,post,errors,processing} = useForm({
-        name:"",
-        role:"admin",
-        gender:"male",
-        number:0,
+        name:user.name,
+        role:user.role,
+        gender:user.gender,
+        number:user.number,
         profile:null,
-        email:"",
-        password:"",
-        password_confirmation:"",
     });
+    console.log(data);
     const hadleSubmit = (e)=>{
         e.preventDefault()
-        post("/admin/create-admin")
+        post(`/admin/edit-admin/${user.id}`)
     }
+    console.log(errors)
     return(
         <div>
             <Head>
-                <title>create admin</title>
+                <title>Edit admin</title>
             </Head>
             <DashHeader/>
             <div className="p-8">
@@ -60,24 +59,10 @@ const createAdmin = ()=>{
                             {errors && <span className="text-red-500">{errors.profile}</span>}
                         </div>
                         <div className="m-auto mt-4 card w-1/2">
-                            <div>
-                                <label htmlFor="email">Email</label>
-                                <input type="email" className="champ" value={data.email} onChange={e=>setData("email",e.target.value)}/>
-                                {errors && <span className="text-red-500">{errors.email}</span>}
-                            </div>
-                            <div>
-                                <label htmlFor="password">Mot de passe</label>
-                                <input type="password" className="champ" value={data.password} onChange={e=>setData("password",e.target.value)}/>
-                                {errors && <span className="text-red-500">{errors.password}</span>}
-                            </div>
-                            <div>
-                                <label htmlFor="password">Confirmation de mot de passe</label>
-                                <input type="password" className="champ" value={data.password_confirmation} onChange={e=>setData("password_confirmation",e.target.value)}/>
-                                
-                            </div>
+                           
 
                     <div className="w-full flex justify-end">
-                        <button disabled={processing} className="disabled:bg-gray-400 mt-4 p-2 rounded-md bg-blue-500 text-white w-20 flex gap-2 cursor-pointer"><FaSave className="text-xl"/>Creer</button>
+                        <button disabled={processing}  className="disabled:bg-gray-400 mt-4 p-2 rounded-md bg-blue-500 text-white w-20 flex gap-2 cursor-pointer"><FaSave className="text-xl"/>Creer</button>
                     </div>
                         </div>
 
@@ -88,5 +73,5 @@ const createAdmin = ()=>{
         </div>
     )
 }
-createAdmin.layout = page => <AdminLayout children={page}/>
-export default createAdmin
+editAdmin.layout = page => <AdminLayout children={page}/>
+export default editAdmin

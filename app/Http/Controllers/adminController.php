@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,5 +47,38 @@ class adminController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             return back()->with("success","user inserted successfully");
+    }
+    public function edit(User $user){
+   
+        return inertia("Dashboard/editAdmin",["user"=>$user]);
+    }
+    public function update(Request $request,User $user){
+        $request->validate([
+                "name"=>"required | string",
+                "role"=>"required | string",
+                "gender"=>"required | string",
+                "number"=>"required |numeric",
+                "profile" =>"image| mimes:jpeg,jpg,png|max:2098"
+            ]);
+            $filename = $user->profile;
+            if($request->file("profile")){
+                $filename =time().".".$request->profile->extension();
+                $request->profile->move(public_path("images/admins"),$filename);
+            }
+            $user->name = $request->name;
+            $user->role = $request->role;
+            $user->gender = $request->gender;
+            $user->number = $request->number;
+            $user->profile = $filename;
+            $user->save();
+            return redirect("/admin/admin-gest")->with("success","user updated successfully");
+
+    }
+    public function delete(User $user){
+        if($user->role == "super"){
+            return back()->with("error","super users cant be deleted");
+        }
+        $user->delete();
+        return back()->with("message","user deleted successfully");
     }
 }

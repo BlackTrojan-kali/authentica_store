@@ -17,7 +17,6 @@ export default function AdminLayout({children}){
         setFlashMsg(null);
         setFlashSuc(null);
     }, 3000);
-    console.log(flash)
     return(
         <main>
         <div className="toasts">
@@ -33,7 +32,12 @@ export default function AdminLayout({children}){
             <aside className="sidebar">
                 <div className="flex gap-8"><img src="/images/logo-trans.png" className="w-14"></img> <h1 className="mt-3 font-bold">Dashboard</h1></div>
                 <div className="px-4 py-2 flex gap-8">
-                    <div></div>
+                    <div>
+                        {auth.user.profile ?
+                    <img className="w-14 h-14 rounded-full" src={import.meta.env.VITE_ADMIN_IMAGE_PATH+auth.user.profile}/>:
+                    ""    
+                    }
+                    </div>
                     <div >
                         <p className="font-bold"> {auth.user.name} </p>
                         <span className="text-gray-400"> {auth.user.role}</span>
@@ -44,7 +48,7 @@ export default function AdminLayout({children}){
                     <div className="p-2 flex flex-col gap-6">
                         <div className="flex gap-2">
                             <i><FaDashcube className="text-xl"/></i>
-                            <Link>Dashboard</Link>
+                            <Link href="/admin/dashboard">Dashboard</Link>
                         </div>
                         <div className="flex gap-2">
                             <i><FaObjectGroup className="text-xl"/></i>
