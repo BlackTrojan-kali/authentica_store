@@ -33,7 +33,7 @@ class adminController extends Controller
             mkdir($uploadPath, 0755, true);
             }
             if ($request->file('profile')) {
-                $imageName = time() . '.' . $request->profile->extension();
+                $imageName = time() . '.' . $request->profile->getClientOrigninalName();
                 $request->profile->move($uploadPath, $imageName);
             }
             
@@ -62,7 +62,7 @@ class adminController extends Controller
             ]);
             $filename = $user->profile;
             if($request->file("profile")){
-                $filename =time().".".$request->profile->extension();
+                $filename =time().".".$request->profile->getClientOrigninalName();
                 $request->profile->move(public_path("images/admins"),$filename);
             }
             $user->name = $request->name;

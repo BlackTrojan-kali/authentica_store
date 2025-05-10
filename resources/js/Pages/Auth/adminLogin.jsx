@@ -33,7 +33,7 @@ setTimeout(() => {
         </div>
         <section className="w-full">
             <div className="warning-message"></div>
-            <div className="m-auto font-bold bg-white rounded-lg  border-1 border-gray-300 w-1/3 p-10 mt-32">
+            <div className="m-auto font-bold bg-white rounded-lg  border-1 border-gray-300 w-1/4 p-10 mt-32">
                 <h1 className="text-center">Connexion Admin</h1>
                 <form onSubmit={handleSubmit} className="text-sm">
                 <div>

@@ -31,6 +31,7 @@
         height: 100vh;
         color:white;
         width: 270px;
+        overflow-y: scroll;
         
     }
     .sidebar a:hover{
@@ -92,10 +93,10 @@
     }
     .dash-header{
         background-color: white;
-        padding-left: 5px;
-        padding-right: 5px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         box-shadow:rgb(185, 183, 183) 10px 1px 10px;
         display: flex;
         gap: 10px;
@@ -121,5 +122,12 @@
     /*card design*/
     .card{
         @apply bg-white shadow-md p-6 rounded-md;
+    }
+    .dropdown-button{
+        @apply flex gap-2
+    }
+    .dropdown-list{
+        list-style-type: disc;
+        @apply flex flex-col gap-4 mt-4
     }
 }

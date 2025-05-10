@@ -35,7 +35,7 @@ const  adminGest= ({admins})=>{
                         <tbody>
                             {console.log(admins)}
                             {admins.map(admin=>(
-                                <tr>
+                                <tr key={admin.id}>
                                     <td>{admin.profile ? <img className="w-14 h-14 rounded-full" src={import.meta.env.VITE_ADMIN_IMAGE_PATH+ admin.profile}/>:"null"}</td>
                                     <td>{admin.name}</td>
                                     <td>{admin.role}</td>

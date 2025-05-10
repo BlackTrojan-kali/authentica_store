@@ -1,7 +1,8 @@
 import { Link, useForm, usePage } from "@inertiajs/react"
 import { useState } from "react";
-import { FaDashcube, FaObjectGroup, FaUserAlt } from "react-icons/fa"
+import { FaChevronRight, FaDashcube, FaObjectGroup, FaUserAlt } from "react-icons/fa"
 import { FaGear } from "react-icons/fa6"
+import DropdownButton from "../components/DropdownButton";
 
 export default function AdminLayout({children}){
     const {auth,flash} = usePage().props
@@ -17,6 +18,27 @@ export default function AdminLayout({children}){
         setFlashMsg(null);
         setFlashSuc(null);
     }, 3000);
+    const dropOptions1 =[ {
+        url:"/admin/cat-gest",
+        title:"categories"
+    },
+    {
+        url:"/admin/weight-gest",
+        title:"poids"
+    },
+    {
+        url:"/admin/size-gest",
+        title:'tailles',
+    },
+    {
+        url:"/admin/color-gest",
+        title:'couleurs',
+    },
+    {
+        url:"",
+        title:"produits"
+    }
+]
     return(
         <main>
         <div className="toasts">
@@ -52,7 +74,7 @@ export default function AdminLayout({children}){
                         </div>
                         <div className="flex gap-2">
                             <i><FaObjectGroup className="text-xl"/></i>
-                            <Link>Produits</Link>
+                           <DropdownButton title="Articles" options={dropOptions1}/>
                         </div>
                         <div className="flex gap-2">
                             <i><FaUserAlt className="text-xl"/></i>

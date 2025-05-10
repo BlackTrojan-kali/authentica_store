@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsSuperMiddleware
+class IsAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class IsSuperMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::user() || Auth::user()->role != "super"){
+        if(!Auth::user() || Auth::user()->role != "admin" && Auth::user()->role != "super" ){
             return redirect("/auth/admin")->with("message","you are not authorized to access this ressource");
         }
         return $next($request);
